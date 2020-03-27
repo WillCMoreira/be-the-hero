@@ -1,5 +1,5 @@
+const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection');
-const crypto = require('crypto');
 
 module.exports = {
   async index(req, res) {
@@ -12,7 +12,7 @@ module.exports = {
     const { name, email, whatsapp, city, uf } = req.body;
 
     // Gerando um id
-    const id = crypto.randomBytes(4).toString('HEX');
+    const id = generateUniqueId();
   
     // Inserindo os dados na tabela Ongs
     await connection('ongs').insert({
